@@ -1,0 +1,10 @@
+{
+    "Joe": {
+        "hash": "$argon2id$v=19$m=65536,t=3,p=4$51SqOFBhUlzzg/1qyDKBOQ$abRq90+2BDnnNHQbOqm05O+rBV+R0F45h9NYsVXw9m4",
+        "role": "Clinician"
+    },
+    "Stephen": {
+        "hash": "$argon2id$v=19$m=65536,t=3,p=4$PzSNrV/9cWap3hknD1HCEg$JRb2FbBo4EEGu+RRK/Po2z5XMZDtrHJOUlJGhXdlErQ",
+        "role": "Auditor"
+    }
+}
