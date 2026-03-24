@@ -1,10 +1,7 @@
 {
-    "Joe": {
-        "hash": "$argon2id$v=19$m=65536,t=3,p=4$51SqOFBhUlzzg/1qyDKBOQ$abRq90+2BDnnNHQbOqm05O+rBV+R0F45h9NYsVXw9m4",
-        "role": "Clinician"
-    },
-    "Stephen": {
-        "hash": "$argon2id$v=19$m=65536,t=3,p=4$PzSNrV/9cWap3hknD1HCEg$JRb2FbBo4EEGu+RRK/Po2z5XMZDtrHJOUlJGhXdlErQ",
-        "role": "Auditor"
+    "joe": {
+        "hash": "$argon2id$v=19$m=65536,t=3,p=4$0pLmfPKuGk7kOUYiJ8E7jg$xsZa+5xhX/4HOg/9qCCRGhWVl7ODjjah5Yljw06SBJM",
+        "role": "Clinician",
+        "public_key": "-----BEGIN PUBLIC KEY-----\nMIIDQzCCAjUGByqGSM44BAEwggIoAoIBAQCQoRHgH2ut1jFBHFAHjjAfYcT/rvM0\ngZNSMRqeNZOpNDmHpBU68swOqlt1lXwLO7tG/5Yf3qQnfFb6OZQBRn9mYVCYum/q\n4BJLyUmXDDVXByerubshklzPazbph4OzUsLNT8w3n42EBg8OiFuLNGQ1+JnMwO1B\n8DpV8W5bUElfIAH+KOTUj08jkaCj6BaYdwJ3hyZjvdeT+waaKMqoDzbTGU9N3fx1\nX2jNUIwLNEex0uQCcPVERangL6+Yz7pWIpd6Gti0Y9I4cRscWj0lFCoXFHYJoo8i\n5CCk33MFI0FsANVIbis+/3xKE12rGLtfDmxjpZoa8FNv28f4sDhn8r8XAh0A6GWz\n/fStBPNhGXS+vOuXzNadw/36+ZT15US7WwKCAQAuQdB7f40dNrNxdvCIwcV2FNCA\nSCmXfMGz9uIgWyk97mhUd/btg5H74UsKPlTV8v1yU0sJ0Lqj0JKe9mx5CTh06k+X\nNKJ1/YCnFbgt+sXCmgzBnCqNB3hzp++SrWa48XjjEaYvx3NEyZIwf8Uxgxeht4Qi\nCaIYzhw+AJc2q+9NieaAbmQZGJsUENkp8oAErFAn90iMEQi+siptT4t+iahc8Qnt\n+bs0W+iLDgZaAtYG1jUg7x5vL0n4ggzCBdDwAzP/ZuEoevBffEFjUIuis99g5goD\ntXNFzCnejXPtIYuYzCmtNI2hdnOTb5mRj0rylD0EsuKozJXa12JB/8V0on/HA4IB\nBgACggEBAInGBVXbXHSh+QTswRHfjy5fVNvDe7U+RxKjz94ZJCVpp16u6XjyVjFz\nY9WOnz0mxqLu55SuglPSHQtQ4X7x+XANejKewjdIfkfXD745WoaUO0RZeZdOOTkn\nUsEXCX6y9Qt6GwYM4iZGnapEfduwUcenEMKgKBbGGdz8prFcdPhkVosmmD1ttBOs\nHUmuUWMcAOBv6qKI8P8aHjrpEj9yCz3YkrLSWNvLwxMjxMhiSIImp4SoI4VoUE5Z\n9y24VbaNW8xHKBgtYp5U1fxU6Zv3L7QeK44TXsmGODzc1r4Yirn5gjoqAc98eBL8\nr5eRf8NrRGIGEBIrV5kEQqFXel66rd4=\n-----END PUBLIC KEY-----"
     }
 }

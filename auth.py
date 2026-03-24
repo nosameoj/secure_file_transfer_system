@@ -29,7 +29,7 @@ def _save_users(users):
     with open(USER_DB_FILE, 'w') as f:
         json.dump(users, f, indent=4)
 
-def register_user(username, password, role):
+def register_user(username, password, role, public_key):
     """
     Registers a new user, hashes their password, and stores it.
 
@@ -37,6 +37,7 @@ def register_user(username, password, role):
         username (str): The username for the new user.
         password (str): The user's plaintext password.
         role (str): The user's role (e.g., 'Clinician', 'Researcher', 'Auditor').
+        public_key (str): The user's public key in PEM format.
 
     Returns:
         bool: True if registration was successful, False otherwise.
@@ -51,7 +52,8 @@ def register_user(username, password, role):
 
     users[username] = {
         'hash': hashed_password,
-        'role': role
+        'role': role,
+        'public_key': public_key
     }
     _save_users(users)
     print(f"User '{username}' registered successfully as a '{role}'.")
