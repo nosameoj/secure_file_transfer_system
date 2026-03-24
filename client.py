@@ -47,6 +47,62 @@ def generate_and_save_keys(username, password):
     print(f"Key pair generated and saved in '{keys_dir}'")
     return pem_public.decode('utf-8')
 
+def list_and_download_files(username, role):
+    """
+    Fetches the list of downloadable files from the server,
+    prompts the user to select one, and downloads it.
+    """
+    print("\nFetching list of available files...")
+    try:
+        list_response = requests.get(f"{SERVER_URL}/files", params={'role': role})
+        if list_response.status_code != 200:
+            print(f"Error fetching file list: {list_response.json().get('message')}")
+            return
+
+        files = list_response.json()
+        if not files:
+            print("No files available for you to download with your current role.")
+            return
+
+        print("\n--- Files Available for Download ---")
+        for i, file_info in enumerate(files):
+            print(f"{i + 1}: {file_info['original_filename']} (Uploaded by: {file_info['uploader']})")
+        print("------------------------------------")
+
+        while True:
+            try:
+                choice = int(input(f"Enter the number of the file to download (1-{len(files)}), or 0 to cancel: "))
+                if 0 <= choice <= len(files):
+                    break
+                else:
+                    print("Invalid number. Please try again.")
+            except ValueError:
+                print("Invalid input. Please enter a number.")
+
+        if choice == 0:
+            print("Download cancelled.")
+            return
+
+        selected_file = files[choice - 1]
+        unique_filename = selected_file['unique_filename']
+        original_filename = selected_file['original_filename']
+
+        print(f"\nDownloading '{original_filename}'...")
+        download_response = requests.post(f"{SERVER_URL}/download/{unique_filename}", json={'username': username, 'role': role})
+
+        if download_response.status_code == 200:
+            save_dir = 'downloads'
+            os.makedirs(save_dir, exist_ok=True)
+            save_path = os.path.join(save_dir, original_filename)
+            with open(save_path, 'wb') as f:
+                f.write(download_response.content)
+            print(f"File saved successfully to '{save_path}'")
+        else:
+            print(f"Failed to download file: {download_response.json().get('message')}")
+
+    except requests.exceptions.RequestException as e:
+        print(f"A network error occurred: {e}")
+
 def main():
     global login_attempts
     """Main function to run the client application."""
@@ -127,7 +183,10 @@ def main():
                     print(f"Server response: {upload_response.json()['message']}")
             else:
                 print("No file selected.")
-
+        else:
+            download_choice = input("Do you want to download a file? (y/N): ")
+            if download_choice.lower() == 'y':
+                list_and_download_files(username, role)
 
 if __name__ == '__main__':
     main()

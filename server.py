@@ -9,7 +9,7 @@ import os
 import uuid
 import json
 from datetime import datetime
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 from werkzeug.utils import secure_filename
 from auth import login_user, register_user
 
@@ -119,6 +119,59 @@ def upload_file():
         return jsonify({'message': f'File "{original_filename}" uploaded successfully.'}), 200
 
     return jsonify({'message': 'File upload failed.'}), 400
+
+@app.route('/files', methods=['GET'])
+def list_files():
+    """
+    Lists files that are accessible to the user based on their role.
+    It checks if the user's role matches the uploader's role.
+    """
+    user_role = request.args.get('role')
+    if not user_role:
+        return jsonify({"message": "User role is required as a query parameter."}), 400
+
+    metadata = _load_file_metadata()
+    accessible_files = []
+    for unique_filename, file_data in metadata.items():
+        # Access is granted if the user's role matches the uploader's role.
+        # This could be expanded later to use a list of allowed roles.
+        if file_data.get('uploader_role') == user_role:
+            accessible_files.append({
+                'unique_filename': unique_filename,
+                'original_filename': file_data.get('original_filename', 'N/A'),
+                'uploader': file_data.get('uploader', 'N/A'),
+                'timestamp': file_data.get('upload_timestamp', 'N/A')
+            })
+    return jsonify(accessible_files), 200
+
+@app.route('/download/<string:unique_filename>', methods=['POST'])
+def download_file(unique_filename):
+    """
+    Handles downloading a specific file.
+    It verifies the user's role against the file's metadata before sending.
+    """
+    data = request.get_json()
+    role = data.get('role')
+
+    if not role:
+        return jsonify({'message': 'Role is required for authorization.'}), 400
+
+    metadata = _load_file_metadata()
+    file_metadata = metadata.get(unique_filename)
+
+    if not file_metadata:
+        return jsonify({'message': 'File not found.'}), 404
+
+    if file_metadata.get('uploader_role') != role:
+        return jsonify({'message': 'Access denied. You do not have the required role.'}), 403
+
+    return send_from_directory(
+        app.config['UPLOAD_FOLDER'],
+        unique_filename,
+        as_attachment=True,
+        download_name=file_metadata.get('original_filename')
+    )
+
 if __name__ == '__main__':
     # Note: debug=True is for development only.
     app.run(port=5000, debug=True)
