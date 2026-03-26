@@ -3,3 +3,5 @@ pycryptodome
 flask
 argon2-cffi
 requests
+pyotp
+qrcode

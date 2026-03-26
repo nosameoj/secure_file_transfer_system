@@ -9,6 +9,7 @@ key derivation function designed to be resistant to GPU cracking attacks.
 
 import os
 import json
+import pyotp
 from argon2 import PasswordHasher
 from argon2.exceptions import VerifyMismatchError
 
@@ -17,12 +18,15 @@ ph = PasswordHasher()
 
 USER_DB_FILE = 'users.json'
 
-def _load_users():
+def load_users():
     """Loads the user database from the JSON file."""
     if not os.path.exists(USER_DB_FILE):
         return {}
     with open(USER_DB_FILE, 'r') as f:
-        return json.load(f)
+        try:
+            return json.load(f)
+        except json.JSONDecodeError:
+            return {} # Return empty dict if file is empty or corrupt
 
 def _save_users(users):
     """Saves the user database to the JSON file."""
@@ -31,7 +35,7 @@ def _save_users(users):
 
 def register_user(username, password, role, public_key):
     """
-    Registers a new user, hashes their password, and stores it.
+    Registers a new user, hashes their password, and stores it along with a TOTP secret.
 
     Args:
         username (str): The username for the new user.
@@ -40,40 +44,64 @@ def register_user(username, password, role, public_key):
         public_key (str): The user's public key in PEM format.
 
     Returns:
-        bool: True if registration was successful, False otherwise.
+        A tuple of (bool, str). (True, provisioning_uri) if registration was successful,
+        (False, None) otherwise.
     """
-    users = _load_users()
+    users = load_users()
     if username in users:
         print(f"Error: Username '{username}' already exists.")
-        return False
+        return False, None
 
     # Hash the password. Argon2 handles salt generation automatically.
     hashed_password = ph.hash(password)
 
+    # Generate a TOTP secret for MFA
+    totp_secret = pyotp.random_base32()
+    provisioning_uri = pyotp.totp.TOTP(totp_secret).provisioning_uri(
+        name=username, issuer_name='SecureClinicalDataSystem'
+    )
+
     users[username] = {
         'hash': hashed_password,
         'role': role,
-        'public_key': public_key
+        'public_key': public_key,
+        'totp_secret': totp_secret
     }
     _save_users(users)
     print(f"User '{username}' registered successfully as a '{role}'.")
-    return True
+    return True, provisioning_uri
 
 def login_user(username, password):
     """
-    Verifies a user's login credentials.
+    Verifies a user's password.
 
     Returns:
-        str: The user's role if login is successful, None otherwise.
+        bool: True if password is correct, False otherwise.
     """
-    users = _load_users()
+    users = load_users()
     if username not in users:
-        return None
+        return False
 
     try:
         # ph.verify checks the password and raises an exception if it fails.
-        # This is resistant to timing attacks.
         ph.verify(users[username]['hash'], password)
-        return users[username]['role']
+        return True
     except VerifyMismatchError:
+        return False
+
+def verify_mfa_code(username, mfa_code):
+    """
+    Verifies the MFA code for a given user.
+
+    Returns:
+        str: The user's role if the MFA code is valid, None otherwise.
+    """
+    users = load_users()
+    user_data = users.get(username)
+    if not user_data or 'totp_secret' not in user_data:
         return None
+
+    totp = pyotp.TOTP(user_data['totp_secret'])
+    if totp.verify(mfa_code):
+        return user_data['role']
+    return None
