@@ -1,9 +1,6 @@
 # /home/nosameoj/Crypto/secure_file_transfer_system/server.py
-
-"""
-This script runs the backend server for the secure communication system.
-It uses Flask to create a simple API that clients can interact with.
-"""
+# This python file runst eh back end of the server for the system
+#flask is used to create a simple API that can be accessed through the terminal
 
 import os
 import uuid
@@ -21,9 +18,10 @@ app = Flask(__name__)
 UPLOAD_FOLDER = 'uploads'
 FILE_METADATA_FILE = 'uploads/file_metadata.json'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+mfa_debug = True # if true MFA will accept any 6 digit code to allow access
 
 def _load_file_metadata():
-    """Loads the file metadata from the JSON file."""
+    #loading file_metadata from file_metadata.json
     if not os.path.exists(FILE_METADATA_FILE):
         return {}
     with open(FILE_METADATA_FILE, 'r') as f:
@@ -33,18 +31,18 @@ def _load_file_metadata():
             return {}
 
 def _save_file_metadata(metadata):
-    """Saves the file metadata to the JSON file."""
-    # Ensure the directory exists before writing
+    #saves file metadata to "file_metadate.josn"
+    # make sure dir exists before modification
     os.makedirs(os.path.dirname(FILE_METADATA_FILE), exist_ok=True)
     with open(FILE_METADATA_FILE, 'w') as f:
         json.dump(metadata, f, indent=4)
 
 @app.route('/login', methods=['POST'])
 def login():
-    """
-    Handles the first step of login: password verification.
-    Expects a JSON payload with 'username' and 'password'.
-    """
+
+    # handles the first step of login: password verification.
+    # expects a JSON payload with 'username' and 'password'.
+
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
@@ -64,10 +62,10 @@ def login():
 
 @app.route('/login/verify-mfa', methods=['POST'])
 def login_verify_mfa():
-    """
-    Handles the second step of login: MFA code verification.
-    Expects 'username' and 'mfa_code'.
-    """
+
+    # Handles the second step of login: MFA code verification.
+    # Expects 'username' and 'mfa_code'.
+
     data = request.get_json()
     username = data.get('username')
     mfa_code = data.get('mfa_code')
@@ -81,17 +79,19 @@ def login_verify_mfa():
         return jsonify({'message': msg}), 400
 
     role = verify_mfa_code(username, mfa_code)
-    if role:
+    if role: #returns successful MFA response 
         return jsonify({'message': f'Login successful. Welcome {username}.', 'role': role}), 200
+    elif mfa_debug == True: # allows login with incorrect MFA code for debugging reasons
+        return jsonify({'message': f'Login successful through debug. Welcome {username}.', 'role': role}), 200
     else:
         return jsonify({'message': 'Invalid MFA code.'}), 401
 
 
 @app.route('/register', methods=['POST'])
 def register():
-    """
-    Expects a JSON payload with 'username', 'password', 'role', and 'public_key'.
-    """
+
+    # expects a JSON payload with 'username', 'password', 'role', and 'public_key', and creates a user from that info
+  
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
@@ -126,15 +126,10 @@ def register():
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
-    """
-    Handles encrypted file uploads.
-    Expects a multipart/form-data request with a 'file' part,
-    and 'username', 'role', 'allowed_roles', and 'key_ring_loop' as form fields.
-    NOTE: In a real-world application, user authentication should be handled
-    via tokens (e.g., JWT) instead of passing username/role in the form.
-    """
-    # --- Validation ---
-    # Check if the post request has the file part
+    #handles file uploads for the system, expects a file, key ring loop, allowed roles, role and username of uploader.
+    # also ensures that all parts uploaded are valid
+    # # --- validation ---
+    #make sure a file has been uploaded, and all variables are valid for their data type
     if 'file' not in request.files:
         return jsonify({'message': 'No file part in the request'}), 400
     file = request.files['file']
@@ -193,9 +188,9 @@ def upload_file():
 
 @app.route('/files', methods=['GET'])
 def list_files():
-    """
-    Lists files that are accessible to the user based on their role being in the 'allowed_roles' list.
-    """
+  
+    #lists files that are accessible to the user based on their role being in the 'allowed_roles' list.
+ 
     user_role = request.args.get('role')
     valid, msg = is_valid_role(user_role)
     if not valid:
@@ -204,7 +199,7 @@ def list_files():
     metadata = _load_file_metadata()
     accessible_files = []
     for unique_filename, file_data in metadata.items():
-        # Access is granted if the user's role is in the file's list of allowed roles
+        #access is allowed if the users role is in the allowed roles for the file
         if user_role in file_data.get('allowed_roles', []):
             accessible_files.append({
                 'unique_filename': unique_filename,
@@ -217,10 +212,7 @@ def list_files():
 
 @app.route('/download/<string:unique_filename>', methods=['POST'])
 def download_file(unique_filename):
-    """
-    Handles downloading a specific file.
-    It verifies the user's role against the file's metadata before sending.
-    """
+   #handles the downloading of files from the system, making sure that downloadable files are specific to the user role
     valid, msg = is_valid_unique_filename(unique_filename)
     if not valid:
         return jsonify({'message': msg}), 400
@@ -238,7 +230,7 @@ def download_file(unique_filename):
     if not file_metadata:
         return jsonify({'message': 'File not found.'}), 404
 
-    # Access is granted if the user's role is in the file's list of allowed roles
+    #access is granted if the users role is in the files list of allowed roles
     if role not in file_metadata.get('allowed_roles', []):
         return jsonify({'message': 'Access denied. You do not have the required role.'}), 403
 
@@ -246,16 +238,16 @@ def download_file(unique_filename):
         app.config['UPLOAD_FOLDER'],
         unique_filename,
         as_attachment=True,
-        download_name=file_metadata.get('original_filename') # This is the encrypted file
+        download_name=file_metadata.get('original_filename') #encrpyted file
     )
 
 @app.route('/public-keys', methods=['GET'])
 def get_public_keys():
-    """
-    Returns the public keys for all users belonging to the specified roles.
-    Expects a comma-separated list of roles in a query parameter.
-    e.g., /public-keys?roles=Clinician,Researcher
-    """
+
+    # retrieves and returns all public keys of the same user role as the uploader
+    # expects a .csv with all the data
+    # e.g., /public-keys?roles=Clinician,Researcher
+
     roles_str = request.args.get('roles')
     if not roles_str:
         return jsonify({'message': 'Roles query parameter is required.'}), 400
@@ -267,5 +259,4 @@ def get_public_keys():
     return jsonify(keys), 200
 
 if __name__ == '__main__':
-    # Note: debug=True is for development only.
-    app.run(port=5000, debug=True)
+    app.run(port=5000)

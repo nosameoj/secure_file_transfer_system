@@ -1,1 +1,10 @@
-Test data in this file
+Patient ID: P0012345
+Date of Birth: 1985-03-15
+Gender: Female
+Diagnosis: Hypertension, Type 2 Diabetes
+Medications: Lisinopril (10mg), Metformin (500mg)
+Last Visit: 2026-04-10
+
+Research Study: "Impact of Diet on Blood Pressure"
+Consent ID: CSN-98765
+Data Points: Blood Pressure Readings (daily), Dietary Intake Logs (weekly)

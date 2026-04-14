@@ -1,15 +1,15 @@
 {
-    "6bd25f61-c15a-44ef-8690-9400bcd2ac96_20250603_195624.jpg": {
-        "original_filename": "20250603_195624.jpg",
-        "uploader": "steve",
+    "2ee1be8c-df6a-44ac-a257-aa6a6a9ff276_test.txt": {
+        "original_filename": "test.txt",
+        "uploader": "joe",
         "uploader_role": "Clinician",
-        "upload_timestamp": "2026-03-26T13:58:57.765332Z",
+        "upload_timestamp": "2026-04-14T08:12:36.728568Z",
         "allowed_roles": [
             "Clinician"
         ],
         "key_ring_loop": {
-            "joe": "N/sDrlFRW7HRMaJqMwkyapdZNOYPBXb5hVYFaKIciVK5OI52wfiIm9NMBT7nFhrp0D5dPwQ0Wnp2k7ZZknhcpj+amf9ClzRjIAKM8gLpu8xwpNpeqsaf03gd4xZm2AMrsuPrzS4kXdrDlGaJIZBlfpAaH0g++od9wJkw46qHtZC1HQmqpzXY9tlBsKpqhISenL4EW911MeFaDLFXjVIVXHJTod1FZYI6Qkx3l+jUe6s756C6Oozmf6qyxbns2/cxXRwItMTVoT3zEemjLKXds7hgL65TCw8QHRAhIvjmdoLl5NEhLQBkUrYnCQaDssfKg3tItdvtPDjxMpyKZWCuag==",
-            "steve": "gwWlQEwHHeuIXhaVEwt7cAm4PHgZGdjQBPDABkYyVyh7duTfDriZg2m2DTbnLegJW9Bsd8FmL65QVt0bY2Laorpg8ZASQaNGcSTZoaNYAoG2RFRy5elW2fGydngdlBMuRCTMXwhiz0j3eiUk6CeJ0jV/6uFGmw918iJjZ5foMA17PQK5gUrlDCXaLdMulIj0FemaoJh8R30MyCNFxmPDI2PORQ8D6WIOJ0eSuoC0brzooB07REIXe9TKdLYSDe0GOx8OBwdYAsQdVCkoYTTHbpXz9QEa4zyxUSqIZnZY2bUk8hgxclLYh8PXHZL9UdjCwlfNJbUOi5bnfc2G/M84Jg=="
+            "joe": "ed2CWmcSOHUp4Tsi4Qca6H2CKCd5EdRQwQB7TBDOYG7WIfUyxC2nOwnKPd3JqLcs08L2K3EWtTLgFWu+GeceB49QN+8s9ko/KTQAnUz7EeWCz6XHB6DsR/pKSNILvosv/R8F+/HUIFGdhBJd3q4V8/nZg30g2h929453/jisYfoS7lrXanOOFTCElwMQeNLs9umrRzZBpyxs4XFHA5u1yf8MuK3JTMv5AoabVw4pMqUZssNpdlhTZMIyYgwYcp2tAwi6Ju45am42JeuUbyRJAIupxScYbbGCU3VJdjk7Q5OpgfRlDElMHMGlg2RVertqyDXMmLbGsKe0qSTKpmDScA==",
+            "steve": "NIH9kslI4hbIfUAnedd2LqPjaDFManfPMpG0i0TQuFUVigqehUrw1DCe6ph0N7015/B0kiUF4GYz2ldKbjPioirspp/B+SjWYUcrIyrAMmHdCivxDM0FRPcOcGCwzpjfUwpih6lUX4djzpp4NmJRqsN3r7aMag813yzw/CUSG7Ri7/gfBkpon6JARhK21dVb89ciZeJe9ELz3L6gFwnihiY/Gh985FigXapLDzx1bGwg9mCyW5YDjOI+KCWXAItLryztJ6aZqszbgRjhYgG8IYvFemma7AckfDICI9QvaOoexTDQxLtGWQijRrrhAQQ47BNqUEEEsPcn4Hg/syMAfA=="
         }
     }
 }
