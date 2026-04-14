@@ -1,9 +1,6 @@
 # /home/nosameoj/Crypto/secure_file_transfer_system/client.py
 
-"""
-This script acts as the client application.
-Users will run this from their terminal to interact with the server.
-"""
+#this script runs the client side 
 
 import requests
 import getpass
@@ -33,35 +30,59 @@ MFA_CODE_REGEX = re.compile(r"^\d{6}$")
 
 
 def input_with_timeout(prompt, timeout=TIMEOUT_SECONDS):
-    
     """
     Gets user input with a timeout.
-    NOTE: This implementation uses `select` and is suitable for Unix-like systems.
-    For Windows, a different approach (e.g., using `msvcrt`) would be needed.
+    Supports both Unix-like systems and Windows.
 
     Returns:
         The input string, or None if the timeout is reached.
     """
+    #gathers the user input, with a timeout to logout user after 60 seconds of inactivity
+    #uses "select" for unix systems
+    #uses msvcrt for windows
+
     print(prompt, end=' ', flush=True)
-    ready, _, _ = select.select([sys.stdin], [], [], timeout)
-    if ready:
-        return sys.stdin.readline().strip()
+    if os.name == 'nt':
+        import msvcrt
+        import time
+        start_time = time.time()
+        input_string = ""
+        while True:
+            if msvcrt.kbhit():
+                char = msvcrt.getwch()
+                if char in ('\x00', '\xe0'):
+                    msvcrt.getwch() # Consume scan code for special keys like arrows
+                    continue
+                if char == '\x03': # Ctrl+C support
+                    raise KeyboardInterrupt
+                if char in ('\r', '\n'):
+                    print()
+                    return input_string.strip()
+                elif char == '\x08': # Backspace support
+                    if len(input_string) > 0:
+                        input_string = input_string[:-1]
+                        print('\b \b', end='', flush=True)
+                else:
+                    input_string += char
+                    print(char, end='', flush=True)
+            if time.time() - start_time > timeout:
+                print("\n\n[!] Timed out due to inactivity. You have been logged out.")
+                return None
+            time.sleep(0.01)
     else:
-        print("\n\n[!] Timed out due to inactivity. You have been logged out.")
-        return None
+        ready, _, _ = select.select([sys.stdin], [], [], timeout)
+        if ready:
+            return sys.stdin.readline().strip()
+        else:
+            print("\n\n[!] Timed out due to inactivity. You have been logged out.")
+            return None
 
 def generate_and_save_keys(username, password):
-    """
-    Generates a new DSA key pair and saves them to disk locally.
-    The private key is encrypted with the user's password.
 
-    Args:
-        username (str): The username, used for creating unique key filenames.
-        password (str): The password used to encrypt the private key.
+    #generates an RSA key pair, and saves both to local disk, keys are encrpyted locally with users password
+    #requires vars to username and password
+    #returns the public key in a PEM format string, to be later saved in users.json
 
-    Returns:
-        str: The public key in PEM format as a string.
-    """
     # Generate a 2048-bit RSA key for encryption and signing
     key = RSA.generate(2048)
     public_key = key.publickey()

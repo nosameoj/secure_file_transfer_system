@@ -81,7 +81,11 @@ def login_verify_mfa():
     role = verify_mfa_code(username, mfa_code)
     if role: #returns successful MFA response 
         return jsonify({'message': f'Login successful. Welcome {username}.', 'role': role}), 200
-    elif mfa_debug == True: # allows login with incorrect MFA code for debugging reasons
+    elif mfa_debug: # allows login with incorrect MFA code for debugging reasons
+        # If debug is on, we still need to fetch the user's role as verify_mfa_code returned None
+        users = load_users()
+        user_data = users.get(username)
+        role = user_data.get('role') if user_data else None
         return jsonify({'message': f'Login successful through debug. Welcome {username}.', 'role': role}), 200
     else:
         return jsonify({'message': 'Invalid MFA code.'}), 401
