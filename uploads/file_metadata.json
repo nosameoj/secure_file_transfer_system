@@ -11,5 +11,32 @@
             "joe": "ed2CWmcSOHUp4Tsi4Qca6H2CKCd5EdRQwQB7TBDOYG7WIfUyxC2nOwnKPd3JqLcs08L2K3EWtTLgFWu+GeceB49QN+8s9ko/KTQAnUz7EeWCz6XHB6DsR/pKSNILvosv/R8F+/HUIFGdhBJd3q4V8/nZg30g2h929453/jisYfoS7lrXanOOFTCElwMQeNLs9umrRzZBpyxs4XFHA5u1yf8MuK3JTMv5AoabVw4pMqUZssNpdlhTZMIyYgwYcp2tAwi6Ju45am42JeuUbyRJAIupxScYbbGCU3VJdjk7Q5OpgfRlDElMHMGlg2RVertqyDXMmLbGsKe0qSTKpmDScA==",
             "steve": "NIH9kslI4hbIfUAnedd2LqPjaDFManfPMpG0i0TQuFUVigqehUrw1DCe6ph0N7015/B0kiUF4GYz2ldKbjPioirspp/B+SjWYUcrIyrAMmHdCivxDM0FRPcOcGCwzpjfUwpih6lUX4djzpp4NmJRqsN3r7aMag813yzw/CUSG7Ri7/gfBkpon6JARhK21dVb89ciZeJe9ELz3L6gFwnihiY/Gh985FigXapLDzx1bGwg9mCyW5YDjOI+KCWXAItLryztJ6aZqszbgRjhYgG8IYvFemma7AckfDICI9QvaOoexTDQxLtGWQijRrrhAQQ47BNqUEEEsPcn4Hg/syMAfA=="
         }
+    },
+    "20d862d1-c44a-4bd1-b270-3612d048841c_test.txt": {
+        "original_filename": "test.txt",
+        "uploader": "jerry",
+        "uploader_role": "Researcher",
+        "upload_timestamp": "2026-04-29T15:31:23.409971Z",
+        "allowed_roles": [
+            "Researcher"
+        ],
+        "key_ring_loop": {
+            "jerry": "Gzk+UIqnsxddXAOkXnXNWAp5c5gxxWkH0S84cUisgShViWKq0VfFWC+Us6pHjLNhV36trMtwdh2d/P1HwrBJRkDnV3hGjzR+pH8jM1ijO4fh+T+lgC5ZV/UxIp+I8V3bn4wyIhq2LNjdsdG1fIKRFSSTiddwbLhxghAstAW5dAfDrI2TiSyld/AKAnqDhvbx/LF6pguGd7aw1S68DNr65teQ96x1IFNaJgMSQd2G/rdILDXTz3773T2HpkSWMTrtS55SOyHXO95y5AQT+u0yZ9ZD1o1wf0gcIRU5xjMuKvKxCwuDVRtkwlIsDh3kSYf5Ikp7R3UTmBXcHBiz9oksfA=="
+        },
+        "signature": "tmMijwq+u6324BJ8holnBDUrEhZ7HrePGp3rr9CaQCCmDkjtLqR6vtkbnUlC/5ep1Lm1OS/XD9431PNu/eU8qPAB2g2S1clA/HPx3aYN9r3cZW/yyvUzQsvWSgq1E/QBdxFJJIL+DlI2dWU8uMpdvrSLFB5VzQZLcXlFaeTjJ/qpNYBxHyyb3NKMlAukHv/1DDInpB5rQKWYSDxspAZG8B7JbcNr3UkT/1nhTwx7iE+LJxfU8aE5H+T4fa+nl3gKcHeUSyzoRJqkvSqbdUOeZb+CB5zJOjw7I3qIGQ9tWmQF4R6LWbjXErddRElFxue1e27iW/P7a5FlgoqNE4R38Q=="
+    },
+    "f36346e5-37b9-4321-ae4d-7765c654dc46_freq_anal.py": {
+        "original_filename": "freq_anal.py",
+        "uploader": "joe",
+        "uploader_role": "Clinician",
+        "upload_timestamp": "2026-04-29T15:39:59.099208Z",
+        "allowed_roles": [
+            "Clinician"
+        ],
+        "key_ring_loop": {
+            "joe": "fQlufmjeXMHvyTDnBFym2JeLkhkbzlEWNQlo8Gysg3dVdqgjSzE8J9sugLVdQuzxig4kkw8ryX9dwgQv5k4UXxZ3Bc100y9j0MGzEPQbhkV7ixqTi+HE2N9SlXphCHRMLaWgdpnHN1zXwqsVa4kFyh/E+7soVqm3nrSbPYGznDtEM8dI4ZyC+C3BHLJTHeiEkEY3cA8bXpIStQ/Uu7n8st1wWIbgkeEDx6F2s1pBixNzIlFzmB8HIvAis2Enl+Z5N/zkqzkHSVOxc6IsVZ4RJWdPQvWUnz6fN3dzYywWYgAkZZr0hlfecQ8VYRH2hL5Zmq2UAxBxK21tuT3N9uDt2A==",
+            "steve": "NnoU1YT1imKyN73k8ighKlYRTQom73F3kMmqqwH/uaCgoZjGEZEQqyHdeYwaMKvLS/35w6Qu5vcfH2mGlZMKkFjZlHGSK0SLjPr/AtTCdiQOkUGDvgZdo226+kd6yx3y+lAdf+Jlsd0l203DKguudSw8DJHH/eC4qxnBONSVeTwGjn1medGElOvC1lNvfK9CrDFzDZa4IVGDb1lef6n6lmQhvA6AZsY2kL75K8wl41FGGyRCwLRO13Qa9ypSYJxvYvfx4cpKT296tYsxqWPIN2ALKXRYpCJv8wSx1/fsv/5wOm3NV+4bqoobVZJjtvmQ1ehAIUL7sif1LkjNasj+iA=="
+        },
+        "signature": ""
     }
 }

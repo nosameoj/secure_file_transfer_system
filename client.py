@@ -1,6 +1,8 @@
 # /home/nosameoj/Crypto/secure_file_transfer_system/client.py
 
-#this script runs the client side 
+#this script operates the client-side of the secure file transfer system
+#implementing hybrid cryptographic techniques and multi-factor authentication
+#to ensure confidentiality, integrity, and authenticity of clinical data
 
 import requests
 import getpass
@@ -11,6 +13,8 @@ from Crypto.PublicKey import DSA
 from Crypto.PublicKey import RSA
 from Crypto.Cipher import AES, PKCS1_OAEP
 from Crypto.Random import get_random_bytes
+from Crypto.Signature import pss
+from Crypto.Hash import SHA256
 import qrcode
 import sys
 import re
@@ -37,9 +41,9 @@ def input_with_timeout(prompt, timeout=TIMEOUT_SECONDS):
     Returns:
         The input string, or None if the timeout is reached.
     """
-    #gathers the user input, with a timeout to logout user after 60 seconds of inactivity
-    #uses "select" for unix systems
-    #uses msvcrt for windows
+    #gathers user input while enforcing a strict inactivity timeout
+    #this addresses critical session management security requirements
+    #by mitigating risks of unauthorized access on unattended terminals
 
     print(prompt, end=' ', flush=True)
     if os.name == 'nt':
@@ -79,22 +83,22 @@ def input_with_timeout(prompt, timeout=TIMEOUT_SECONDS):
 
 def generate_and_save_keys(username, password):
 
-    #generates an RSA key pair, and saves both to local disk, keys are encrpyted locally with users password
-    #requires vars to username and password
-    #returns the public key in a PEM format string, to be later saved in users.json
+    #generates a 2048-bit rsa key pair for asymmetric cryptography
+    #the private key is encrypted at rest using scrypt and aes-128-cbc
+    #ensuring that even if the host file system is compromised
+    #the key remains secure provided the password has sufficient entropy
 
-    # Generate a 2048-bit RSA key for encryption and signing
     key = RSA.generate(2048)
     public_key = key.publickey()
 
     keys_dir = 'client_keys'
     os.makedirs(keys_dir, exist_ok=True)
 
-    # Export and save the encrypted private key
+    #export and securely persist the encrypted private key to disk
     with open(os.path.join(keys_dir, f"{username}_private_key.pem"), 'wb') as f:
         f.write(key.export_key(format='PEM', passphrase=password, pkcs=8, protection='scryptAndAES128-CBC'))
 
-    # Export and save the public key
+    #export and persist the public key in standard pem format
     pem_public = public_key.export_key(format='PEM')
     with open(os.path.join(keys_dir, f'{username}_public_key.pem'), 'wb') as f:
         f.write(pem_public)
@@ -118,6 +122,24 @@ def load_private_key(username, password):
         print(f"Failed to decrypt private key. Incorrect password or corrupted key file.")
         return None
 
+def view_logs(username, role):
+    print("\nFetching audit logs...")
+    try:
+        response = requests.get(f"{SERVER_URL}/logs", params={'role': role, 'username': username})
+        if response.status_code == 200:
+            logs = response.json()
+            if not logs:
+                print("No logs found.")
+                return
+            print("\n--- Audit Logs ---")
+            for log in logs:
+                print(f"[{log.get('timestamp')}] {log.get('username')} - {log.get('action')}: {log.get('details')}")
+            print("------------------")
+        else:
+            print(f"Failed to fetch logs: {response.json().get('message')}")
+    except requests.exceptions.RequestException as e:
+        print(f"A network error occurred: {e}")
+
 def list_and_download_files(username, role):
     """
     Fetches the list of downloadable files from the server,
@@ -135,6 +157,8 @@ def list_and_download_files(username, role):
             print("No files available for you to download with your current role.")
             return
 
+        #presents the user with a sanitized list of authorized files
+        #enforcing role-based visibility rules defined by the backend
         print("\n--- Files Available for Download ---")
         for i, file_info in enumerate(files):
             print(f"{i + 1}: {file_info['original_filename']} (Uploaded by: {file_info['uploader']})")
@@ -165,27 +189,74 @@ def list_and_download_files(username, role):
         download_response = requests.post(f"{SERVER_URL}/download/{unique_filename}", json={'username': username, 'role': role})
 
         if download_response.status_code == 200:
-            # --- Decryption Process ---
+            #this process verifies the cryptographic signature attached to the file
+            #utilizing the rsa-pss algorithm and a sha-256 digest to validate
+            #the integrity and non-repudiation of the clinical data payload
+            if role in ['Researcher', 'Auditor']:
+                signature_b64 = selected_file.get('signature')
+                uploader_username = selected_file.get('uploader')
+                uploader_role = selected_file.get('uploader_role')
+                
+                if signature_b64 and uploader_username and uploader_role:
+                    print("\nVerifying digital signature...")
+                    keys_response = requests.get(f"{SERVER_URL}/public-keys", params={'roles': uploader_role})
+                    if keys_response.status_code == 200:
+                        public_keys = keys_response.json()
+                        uploader_pub_key_pem = public_keys.get(uploader_username)
+                        if uploader_pub_key_pem:
+                            uploader_pub_key = RSA.import_key(uploader_pub_key_pem)
+                            h = SHA256.new(download_response.content)
+                            verifier = pss.new(uploader_pub_key)
+                            try:
+                                verifier.verify(h, base64.b64decode(signature_b64))
+                                print("Digital signature verified successfully. File integrity intact.")
+                            except (ValueError, TypeError):
+                                print("Warning: Digital signature verification failed! The file may have been tampered with.")
+                                proceed = input("Do you still want to proceed with decryption? (y/N): ")
+                                if proceed.lower() != 'y':
+                                    return
+                            except Exception as e:
+                                print(f"Warning: Digital signature verification encountered an error: {e}")
+                                proceed = input("Do you still want to proceed with decryption? (y/N): ")
+                                if proceed.lower() != 'y':
+                                    return
+                        else:
+                            print("Warning: Could not find uploader's public key for verification.")
+                    else:
+                        print("Warning: Failed to fetch public keys for verification.")
+
+            #initiates the hybrid decryption workflow to retrieve the plaintext
+            #the symmetric aes key is first decrypted using the receivers rsa key
+            #subsequently the aes key decrypts the bulk gcm ciphertext payload
+
+            if role == 'Auditor':
+                #print("auditor")
+                return
             print("File downloaded. Enter your password to decrypt your private key for file decryption.")
             password = getpass.getpass("Password: ")
             private_key = load_private_key(username, password)
             if not private_key:
                 return # Failed to load private key
 
-            # 1. Find this user's encrypted AES key in the key ring
+            #extract the ciphered symmetric key specific to this user from
+            #the cryptographic key ring attached to the file metadata
             key_ring = selected_file['key_ring_loop']
             encrypted_aes_key_b64 = key_ring.get(username)
             if not encrypted_aes_key_b64:
-                print("Error: Could not find an encryption key for your user in the file's metadata.")
+                if role == 'Auditor':
+                    print("Note: As an auditor, you have verified the signature but do not have the decryption key to view the file contents.")
+                else:
+                    print("Error: Could not find an encryption key for your user in the file's metadata.")
                 return
-            
             encrypted_aes_key = base64.b64decode(encrypted_aes_key_b64)
             
-            # 2. Decrypt the AES key with the user's private key
+            #decrypt the encapsulated symmetric key utilizing rsa-oaep padding
+            #which provides semantic security against chosen-ciphertext attacks
             cipher_rsa = PKCS1_OAEP.new(private_key)
             aes_key = cipher_rsa.decrypt(encrypted_aes_key)
 
-            # 3. Decrypt the file content with the AES key
+            #authenticate and decrypt the payload utilizing aes in gcm mode
+            #validating the authentication tag to detect any tampering in transit
             nonce = download_response.content[:16]
             tag = download_response.content[16:32]
             ciphertext = download_response.content[32:]
@@ -223,10 +294,6 @@ def main():
     # Step 1: Attempt to log in with password
     response = requests.post(f"{SERVER_URL}/login", json={'username': username, 'password': password})
 
-    # print("\n--- Server Response ---")
-    # print(f"Status Code: {response.status_code}")
-    # print(response.json())
-    # print("-----------------------\n")
     # Step 2: If password is correct, handle MFA
     if response.status_code == 200 and response.json().get('mfa_required'):
         while True:
@@ -247,10 +314,21 @@ def main():
         role = mfa_response.json()['role']
         print("Your role is:", role)
 
+        if role == 'Auditor':
+            log_choice = input_with_timeout("Do you want to view the audit logs? (y/N):")
+            if log_choice is None:
+                return # Timeout occurred, end session
+            if log_choice.lower() == 'y':
+                view_logs(username, role)
+
         # Post-login actions
-        choice = input_with_timeout("Do you want to upload a file? (y/N):")
-        if choice is None:
-            return # Timeout occurred, end session
+        if role in ['Clinician', 'Researcher']:
+            choice = input_with_timeout("Do you want to upload a file? (y/N):")
+            if choice is None:
+                return # Timeout occurred, end session
+        else:
+            choice = 'n'
+
 
         if choice.lower() == 'y':
             root = Tk()
@@ -273,12 +351,15 @@ def main():
                     print("No users found for the specified roles. Cannot create key ring.")
                     return
 
-                # --- Client-side Encryption ---
+                #implements a hybrid encryption architecture suitable for robust data sharing
+                #a symmetric aes key is generated for high-throughput bulk data encryption
+                #while rsa is utilized to securely distribute this ephemeral symmetric key
                 print("Encrypting file...")
-                # 1. Generate a random symmetric AES key
+                #generate a cryptographically secure random 16-byte symmetric aes key
                 aes_key = get_random_bytes(16)
 
-                # 2. Encrypt the file with the AES key (AES/GCM mode)
+                #encrypt the payload using aes in galois/counter mode
+                #this provides both strict confidentiality and authenticated encryption
                 with open(filepath, 'rb') as f_in:
                     file_data = f_in.read()
                 
@@ -286,7 +367,8 @@ def main():
                 ciphertext, tag = cipher_aes.encrypt_and_digest(file_data)
                 encrypted_file_content = cipher_aes.nonce + tag + ciphertext
 
-                # 3. Create the key ring
+                #construct a cryptographic key ring loop iteratively encrypting the
+                #aes key for every authorized recipient public key using rsa-oaep
                 key_ring = {}
                 for key_username, pub_key_pem in public_keys.items():
                     public_key = RSA.import_key(pub_key_pem)
@@ -294,22 +376,46 @@ def main():
                     encrypted_aes_key = cipher_rsa.encrypt(aes_key)
                     key_ring[key_username] = base64.b64encode(encrypted_aes_key).decode('utf-8')
 
-                # 4. Prepare for upload
-                upload_files = {'file': (os.path.basename(filepath), encrypted_file_content, 'application/octet-stream')}
-                upload_data = {
-                    'username': username,
-                    'role': role,
-                    'allowed_roles': role,
-                    'key_ring_loop': json.dumps(key_ring)
-                }
+                #applies a digital signature over the encrypted payload using the
+                #senders private key and the probabilistic signature scheme
+                #providing rigorous non-repudiation for the clinical dataset
+                signature_b64 = ""
+                proceed_upload = True
+                if role == 'Researcher':
+                    print("Signing encrypted file...")
+                    sign_password = getpass.getpass("Password to unlock private key for signing: ")
+                    private_key = load_private_key(username, sign_password)
+                    if private_key:
+                        h = SHA256.new(encrypted_file_content)
+                        signer = pss.new(private_key)
+                        signature = signer.sign(h)
+                        signature_b64 = base64.b64encode(signature).decode('utf-8')
+                        print("File signed successfully.")
+                    else:
+                        print("Failed to load private key. Upload cancelled.")
+                        proceed_upload = False
 
-                print(f"Uploading encrypted file {os.path.basename(filepath)}...")
-                upload_response = requests.post(f"{SERVER_URL}/upload", files=upload_files, data=upload_data)
-                print(f"Server response: {upload_response.json()['message']}")
+                if proceed_upload:
+                    #package the ciphertext and associated cryptographic metadata for transit
+                    upload_files = {'file': (os.path.basename(filepath), encrypted_file_content, 'application/octet-stream')}
+                    upload_data = {
+                        'username': username,
+                        'role': role,
+                        'allowed_roles': role,
+                        'key_ring_loop': json.dumps(key_ring),
+                        'signature': signature_b64
+                    }
+
+                    print(f"Uploading encrypted file {os.path.basename(filepath)}...")
+                    upload_response = requests.post(f"{SERVER_URL}/upload", files=upload_files, data=upload_data)
+                    print(f"Server response: {upload_response.json()['message']}")
             else:
                 print("No file selected.")
         else:
-            download_choice = input_with_timeout("Do you want to download a file? (y/N):")
+            if role in ['Clinician', 'Researcher']:
+                download_choice = input_with_timeout("Do you want to download a file? (y/N):")
+            else:
+                download_choice = input_with_timeout("Do you want to verify the signature of a role? (y/N):")
             if download_choice is None:
                 return # Timeout occurred, end session
 

@@ -10,5 +10,17 @@
         "role": "Clinician",
         "public_key": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAq32bHCChS9uJFQg4whl3\nG9BF1pSS4x54QyHzeLs1EuQ4kxjHF06vZwtCoYCoyCsbipiOt47yw8ClBe53ZvFT\n2qK+xwIiXtfpj9HDzedck8ICQM8kblYiUBvi3qgRtCh8ZtMoX+2CI+MFkgriPf0p\n7QhBxVw9yTvoCt+4cmXVFflpEVPhP00p25RJVzQWH0tbaU0E37vrIuz5ud6g/kxM\nf6YTSFlXeOK+pVeE7zCorF79QVp3bm1wcQhl9GGX7pcwi9gQme9LY6sp7E4WIC7j\n+quP3R5oxkUPTp8Y4/y3NsKb6YB8Oz7bhju6scwdx8KuMPn7c1J7WWPf5XxHxAt0\n7wIDAQAB\n-----END PUBLIC KEY-----",
         "totp_secret": "J2KTRTWLE52P67HWDWRDPFQ7R6X2TBOZ"
+    },
+    "jerry": {
+        "hash": "$argon2id$v=19$m=65536,t=3,p=4$lgZtjC7xUpPDpnZ7zdNKmQ$wzBvmrjJtINdkvRPAtKHQtyVzd5R5ojEUvzIq3vLZOk",
+        "role": "Researcher",
+        "public_key": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAt/ooOQWJGnRJG7DdmnM+\nf/Rh43rdtLUwxJenSiDzJiPgwuk1bw8jiC09R+fBl0/PxP9cbg9WsN3E0l6Kigmo\nIqtGFP/MQSyytVmwy657sON9F/Dm2feSaV/6bb+3GC+cJnGQ6svtopfD8nMGGgJi\nigkKp5vP7XoqS98biG/fAdPB0M+wEuwhWT6p9Nd/X/pjXdlROThCaQxXVTWVQJfg\nr7sjGNNVwpoBaOn+rkA3nTZGk3KEayPChiUHZRNCEWQZoThnPxD4amOBxSLyalHq\nMae8AhPNdkPwObeznBLVpNJL9IHRfNQQwXjLFtSa+alYoKX488lhQqvQ3DcQzJEC\nKQIDAQAB\n-----END PUBLIC KEY-----",
+        "totp_secret": "J4SRQ36PUJHL42VJVOVPEF7M3IPUAL6U"
+    },
+    "gary": {
+        "hash": "$argon2id$v=19$m=65536,t=3,p=4$jk8+m0fMHN0TQbKxUvqniw$oI1+SPu/UgneGoksFA1PJ2GYpLXO1PsunB+wt9xYRvk",
+        "role": "Auditor",
+        "public_key": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs/oufbr0zSIaYq2eKk3y\naRqrWgDVcm5NyShA27wGCfPiiOiP8mWEUeuwH5xlNWfAVuZFnOJJi486XmmsKXoC\nVaPBojO+JmZGZX2RU/eusvByBr8FzKoJ4MxY9p0lU+ottM+zKF1uXS33mlNu46fd\n7EWBa5AJuJypSsda6uMHrheO/PKbMbfYKFHCl5ie8A7S0zMjkxdty68mPEB1eDMh\nfO6vwIcGKG+lUEXffqapSzYc20IltOTpvFQ/pF12C34oeJGhA67BKomn1wlCmngs\nvSFoUIVpAitfgSmW60PnehEDezVtY8cCFnfBTTFYaJykJecAtB8U3tci6OG8hV/7\n8QIDAQAB\n-----END PUBLIC KEY-----",
+        "totp_secret": "4WBLUQFARHDPHYIFKQF2APN7YLA7OYI7"
     }
 }

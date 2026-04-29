@@ -1,0 +1,224 @@
+[
+    {
+        "timestamp": "2026-04-29T15:38:26.285206Z",
+        "action": "LOGIN",
+        "username": "gary",
+        "details": "Successful debug login as Auditor"
+    },
+    {
+        "timestamp": "2026-04-29T15:39:49.645410Z",
+        "action": "LOGIN",
+        "username": "joe",
+        "details": "Successful debug login as Clinician"
+    },
+    {
+        "timestamp": "2026-04-29T15:39:59.099624Z",
+        "action": "UPLOAD",
+        "username": "joe",
+        "details": "Uploaded file f36346e5-37b9-4321-ae4d-7765c654dc46_freq_anal.py"
+    },
+    {
+        "timestamp": "2026-04-29T15:40:16.189563Z",
+        "action": "LOGIN",
+        "username": "steve",
+        "details": "Successful debug login as Clinician"
+    },
+    {
+        "timestamp": "2026-04-29T15:40:20.695929Z",
+        "action": "DOWNLOAD",
+        "username": "steve",
+        "details": "Downloaded file f36346e5-37b9-4321-ae4d-7765c654dc46_freq_anal.py"
+    },
+    {
+        "timestamp": "2026-04-29T15:40:38.845090Z",
+        "action": "LOGIN",
+        "username": "gary",
+        "details": "Successful debug login as Auditor"
+    },
+    {
+        "timestamp": "2026-04-29T15:43:17.759796Z",
+        "action": "LOGIN",
+        "username": "gary",
+        "details": "Successful debug login as Auditor"
+    },
+    {
+        "timestamp": "2026-04-29T15:44:08.101818Z",
+        "action": "LOGIN",
+        "username": "gary",
+        "details": "Successful debug login as Auditor"
+    },
+    {
+        "timestamp": "2026-04-29T15:44:16.385179Z",
+        "action": "DOWNLOAD",
+        "username": "gary",
+        "details": "Downloaded file 20d862d1-c44a-4bd1-b270-3612d048841c_test.txt"
+    },
+    {
+        "timestamp": "2026-04-29T15:46:41.054767Z",
+        "action": "LOGIN",
+        "username": "gary",
+        "details": "Successful debug login as Auditor"
+    },
+    {
+        "timestamp": "2026-04-29T15:47:44.778978Z",
+        "action": "LOGIN",
+        "username": "gary",
+        "details": "Successful debug login as Auditor"
+    },
+    {
+        "timestamp": "2026-04-29T15:48:03.354901Z",
+        "action": "LOGIN",
+        "username": "gary",
+        "details": "Successful debug login as Auditor"
+    },
+    {
+        "timestamp": "2026-04-29T15:53:11.486373Z",
+        "action": "LOGIN",
+        "username": "gary",
+        "details": "Successful debug login as Auditor"
+    },
+    {
+        "timestamp": "2026-04-29T15:56:02.675842Z",
+        "action": "LOGIN",
+        "username": "gary",
+        "details": "Successful debug login as Auditor"
+    },
+    {
+        "timestamp": "2026-04-29T15:56:09.074893Z",
+        "action": "DOWNLOAD",
+        "username": "gary",
+        "details": "Downloaded file 20d862d1-c44a-4bd1-b270-3612d048841c_test.txt"
+    },
+    {
+        "timestamp": "2026-04-29T15:57:12.923133Z",
+        "action": "LOGIN",
+        "username": "gary",
+        "details": "Successful debug login as Auditor"
+    },
+    {
+        "timestamp": "2026-04-29T15:57:16.589499Z",
+        "action": "DOWNLOAD",
+        "username": "gary",
+        "details": "Downloaded file 20d862d1-c44a-4bd1-b270-3612d048841c_test.txt"
+    },
+    {
+        "timestamp": "2026-04-29T15:57:45.502959Z",
+        "action": "LOGIN",
+        "username": "gary",
+        "details": "Successful debug login as Auditor"
+    },
+    {
+        "timestamp": "2026-04-29T15:57:47.929244Z",
+        "action": "DOWNLOAD",
+        "username": "gary",
+        "details": "Downloaded file 20d862d1-c44a-4bd1-b270-3612d048841c_test.txt"
+    },
+    {
+        "timestamp": "2026-04-29T16:00:05.797841Z",
+        "action": "LOGIN",
+        "username": "gary",
+        "details": "Successful debug login as Auditor"
+    },
+    {
+        "timestamp": "2026-04-29T16:00:09.245434Z",
+        "action": "DOWNLOAD",
+        "username": "gary",
+        "details": "Downloaded file f36346e5-37b9-4321-ae4d-7765c654dc46_freq_anal.py"
+    },
+    {
+        "timestamp": "2026-04-29T16:00:26.398075Z",
+        "action": "LOGIN",
+        "username": "gary",
+        "details": "Successful debug login as Auditor"
+    },
+    {
+        "timestamp": "2026-04-29T16:00:28.878661Z",
+        "action": "DOWNLOAD",
+        "username": "gary",
+        "details": "Downloaded file f36346e5-37b9-4321-ae4d-7765c654dc46_freq_anal.py"
+    },
+    {
+        "timestamp": "2026-04-29T16:01:12.869804Z",
+        "action": "LOGIN",
+        "username": "gary",
+        "details": "Successful debug login as Auditor"
+    },
+    {
+        "timestamp": "2026-04-29T16:01:15.546628Z",
+        "action": "DOWNLOAD",
+        "username": "gary",
+        "details": "Downloaded file f36346e5-37b9-4321-ae4d-7765c654dc46_freq_anal.py"
+    },
+    {
+        "timestamp": "2026-04-29T16:01:43.028752Z",
+        "action": "LOGIN",
+        "username": "gary",
+        "details": "Successful debug login as Auditor"
+    },
+    {
+        "timestamp": "2026-04-29T16:01:46.203549Z",
+        "action": "DOWNLOAD",
+        "username": "gary",
+        "details": "Downloaded file f36346e5-37b9-4321-ae4d-7765c654dc46_freq_anal.py"
+    },
+    {
+        "timestamp": "2026-04-29T16:02:00.706324Z",
+        "action": "LOGIN",
+        "username": "gary",
+        "details": "Successful debug login as Auditor"
+    },
+    {
+        "timestamp": "2026-04-29T16:02:03.408175Z",
+        "action": "DOWNLOAD",
+        "username": "gary",
+        "details": "Downloaded file 20d862d1-c44a-4bd1-b270-3612d048841c_test.txt"
+    },
+    {
+        "timestamp": "2026-04-29T16:02:19.589892Z",
+        "action": "LOGIN",
+        "username": "gary",
+        "details": "Successful debug login as Auditor"
+    },
+    {
+        "timestamp": "2026-04-29T16:02:25.383311Z",
+        "action": "DOWNLOAD",
+        "username": "gary",
+        "details": "Downloaded file 20d862d1-c44a-4bd1-b270-3612d048841c_test.txt"
+    },
+    {
+        "timestamp": "2026-04-29T16:03:54.432412Z",
+        "action": "LOGIN",
+        "username": "gary",
+        "details": "Successful debug login as Auditor"
+    },
+    {
+        "timestamp": "2026-04-29T16:04:20.881478Z",
+        "action": "LOGIN",
+        "username": "gary",
+        "details": "Successful debug login as Auditor"
+    },
+    {
+        "timestamp": "2026-04-29T16:05:41.757503Z",
+        "action": "LOGIN",
+        "username": "gary",
+        "details": "Successful debug login as Auditor"
+    },
+    {
+        "timestamp": "2026-04-29T16:05:45.076676Z",
+        "action": "DOWNLOAD",
+        "username": "gary",
+        "details": "Downloaded file 20d862d1-c44a-4bd1-b270-3612d048841c_test.txt"
+    },
+    {
+        "timestamp": "2026-04-29T16:07:53.366505Z",
+        "action": "LOGIN",
+        "username": "gary",
+        "details": "Successful debug login as Auditor"
+    },
+    {
+        "timestamp": "2026-04-29T16:08:50.529119Z",
+        "action": "LOGIN",
+        "username": "gary",
+        "details": "Successful login as Auditor"
+    }
+]

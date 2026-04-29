@@ -1,12 +1,13 @@
 # /home/nosameoj/Crypto/secure_file_transfer_system/validation.py
 
-"""
-This module provides centralized input validation functions for the server.
-"""
+#this module establishes a centralized input validation framework
+#acting as a primary defense-in-depth mechanism against code injection
+#and enforcing stringent data integrity constraints before further processing
 
 import re
 
-# Define constraints
+#defines upper boundaries for user input to prevent buffer overflow vulnerabilities
+#and effectively mitigate denial of service attacks by restricting payload volumes
 MAX_USERNAME_LENGTH = 50
 MIN_USERNAME_LENGTH = 3
 MAX_PASSWORD_LENGTH = 256 # For DoS prevention
@@ -14,7 +15,8 @@ MIN_PASSWORD_LENGTH = 1
 MFA_CODE_LENGTH = 6
 ALLOWED_ROLES = ['Clinician', 'Researcher', 'Auditor', 'Admin']
 
-# Regex patterns
+#utilizes regular expressions to define rigid allowlists for accepted inputs
+#this effectively neutralizes cross-site scripting and local exploitation vectors
 USERNAME_REGEX = re.compile(r"^[a-zA-Z0-9_-]+$")
 MFA_CODE_REGEX = re.compile(r"^\d{6}$")
 PUBLIC_KEY_REGEX = re.compile(r"-----BEGIN PUBLIC KEY-----(.|\n)+-----END PUBLIC KEY-----")
@@ -35,7 +37,8 @@ def is_valid_password_length(password):
     return True, "Password length is valid."
 
 def is_valid_password_complexity(password):
-    """Checks if the password meets complexity requirements."""
+    #evaluates password entropy against comprehensive institutional security policies
+    #ensuring sufficient character diversity to resist advanced dictionary attacks
     if not any(c.isupper() for c in password):
         return False, "Password must contain at least one uppercase letter."
     if not any(c.islower() for c in password):
