@@ -243,10 +243,7 @@ def list_and_download_files(username, role):
             key_ring = selected_file['key_ring_loop']
             encrypted_aes_key_b64 = key_ring.get(username)
             if not encrypted_aes_key_b64:
-                if role == 'Auditor':
-                    print("Note: As an auditor, you have verified the signature but do not have the decryption key to view the file contents.")
-                else:
-                    print("Error: Could not find an encryption key for your user in the file's metadata.")
+                print("Error: Could not find an encryption key for your user in the file's metadata.")
                 return
             encrypted_aes_key = base64.b64decode(encrypted_aes_key_b64)
             

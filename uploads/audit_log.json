@@ -226,5 +226,143 @@
         "action": "LOGIN",
         "username": "joe",
         "details": "Successful login as Clinician"
+    },
+    {
+        "timestamp": "2026-04-30T14:43:24.282887Z",
+        "action": "LOGIN",
+        "username": "joe",
+        "details": "Successful debug login as Clinician"
+    },
+    {
+        "timestamp": "2026-04-30T14:43:48.276947Z",
+        "action": "UPLOAD",
+        "username": "joe",
+        "details": "Uploaded file 3d3e779b-2a89-43ad-acef-3348252bd477_crypt.png"
+    },
+    {
+        "timestamp": "2026-04-30T14:44:30.817488Z",
+        "action": "LOGIN",
+        "username": "steve",
+        "details": "Successful debug login as Clinician"
+    },
+    {
+        "timestamp": "2026-04-30T14:44:35.744522Z",
+        "action": "DOWNLOAD",
+        "username": "steve",
+        "details": "Downloaded file 3d3e779b-2a89-43ad-acef-3348252bd477_crypt.png"
+    },
+    {
+        "timestamp": "2026-04-30T14:47:27.953280Z",
+        "action": "LOGIN",
+        "username": "jerry",
+        "details": "Successful debug login as Researcher"
+    },
+    {
+        "timestamp": "2026-04-30T14:47:44.654032Z",
+        "action": "UPLOAD",
+        "username": "jerry",
+        "details": "Uploaded file 7b5b8ed2-e9ab-4af3-ac9b-5d6d1f370ae6_wagon-.png"
+    },
+    {
+        "timestamp": "2026-04-30T14:47:55.608570Z",
+        "action": "LOGIN",
+        "username": "jerry",
+        "details": "Successful debug login as Researcher"
+    },
+    {
+        "timestamp": "2026-04-30T14:47:59.504109Z",
+        "action": "DOWNLOAD",
+        "username": "jerry",
+        "details": "Downloaded file 7b5b8ed2-e9ab-4af3-ac9b-5d6d1f370ae6_wagon-.png"
+    },
+    {
+        "timestamp": "2026-04-30T14:53:24.036015Z",
+        "action": "LOGIN",
+        "username": "gary",
+        "details": "Successful debug login as Auditor"
+    },
+    {
+        "timestamp": "2026-04-30T14:53:30.600068Z",
+        "action": "DOWNLOAD",
+        "username": "gary",
+        "details": "Downloaded file 20d862d1-c44a-4bd1-b270-3612d048841c_test.txt"
+    },
+    {
+        "timestamp": "2026-04-30T15:12:45.661624Z",
+        "action": "LOGIN",
+        "username": "joe",
+        "details": "Successful debug login as Clinician"
+    },
+    {
+        "timestamp": "2026-04-30T15:13:21.191922Z",
+        "action": "UPLOAD",
+        "username": "joe",
+        "details": "Uploaded file b3e9139b-ed32-4a64-8c95-75225c779aab_Bartholomew.jpeg"
+    },
+    {
+        "timestamp": "2026-04-30T15:13:32.454879Z",
+        "action": "LOGIN",
+        "username": "steve",
+        "details": "Successful debug login as Clinician"
+    },
+    {
+        "timestamp": "2026-04-30T15:13:36.571795Z",
+        "action": "DOWNLOAD",
+        "username": "steve",
+        "details": "Downloaded file b3e9139b-ed32-4a64-8c95-75225c779aab_Bartholomew.jpeg"
+    },
+    {
+        "timestamp": "2026-04-30T15:15:03.020213Z",
+        "action": "LOGIN",
+        "username": "jerry",
+        "details": "Successful debug login as Researcher"
+    },
+    {
+        "timestamp": "2026-04-30T15:15:34.390215Z",
+        "action": "UPLOAD",
+        "username": "jerry",
+        "details": "Uploaded file 8f2cd482-0b90-4f5c-aba4-e70431dc4258_Cyber_Security_Research_Proposal_-_Domains_List.pdf"
+    },
+    {
+        "timestamp": "2026-04-30T15:15:45.373297Z",
+        "action": "LOGIN",
+        "username": "jerry",
+        "details": "Successful debug login as Researcher"
+    },
+    {
+        "timestamp": "2026-04-30T15:15:49.603908Z",
+        "action": "DOWNLOAD",
+        "username": "jerry",
+        "details": "Downloaded file 8f2cd482-0b90-4f5c-aba4-e70431dc4258_Cyber_Security_Research_Proposal_-_Domains_List.pdf"
+    },
+    {
+        "timestamp": "2026-04-30T15:16:46.700070Z",
+        "action": "LOGIN",
+        "username": "gary",
+        "details": "Successful debug login as Auditor"
+    },
+    {
+        "timestamp": "2026-04-30T15:17:06.889804Z",
+        "action": "DOWNLOAD",
+        "username": "gary",
+        "details": "Downloaded file 8f2cd482-0b90-4f5c-aba4-e70431dc4258_Cyber_Security_Research_Proposal_-_Domains_List.pdf"
+    },
+    {
+        "timestamp": "2026-04-30T15:18:43.135830Z",
+        "action": "LOGIN",
+        "username": "gary",
+        "details": "Successful debug login as Auditor"
+    },
+    {
+        "timestamp": "2026-04-30T15:18:47.192613Z",
+        "action": "DOWNLOAD",
+        "username": "gary",
+        "details": "Downloaded file 8f2cd482-0b90-4f5c-aba4-e70431dc4258_Cyber_Security_Research_Proposal_-_Domains_List.pdf"
+    },
+    {
+        "timestamp": "2026-04-30T15:19:44.325034Z",
+        "action": "LOGIN",
+        "username": "steve",
+        "details": "Successful debug login as Clinician"
     }
 ]

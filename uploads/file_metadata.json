@@ -38,5 +38,59 @@
             "steve": "NnoU1YT1imKyN73k8ighKlYRTQom73F3kMmqqwH/uaCgoZjGEZEQqyHdeYwaMKvLS/35w6Qu5vcfH2mGlZMKkFjZlHGSK0SLjPr/AtTCdiQOkUGDvgZdo226+kd6yx3y+lAdf+Jlsd0l203DKguudSw8DJHH/eC4qxnBONSVeTwGjn1medGElOvC1lNvfK9CrDFzDZa4IVGDb1lef6n6lmQhvA6AZsY2kL75K8wl41FGGyRCwLRO13Qa9ypSYJxvYvfx4cpKT296tYsxqWPIN2ALKXRYpCJv8wSx1/fsv/5wOm3NV+4bqoobVZJjtvmQ1ehAIUL7sif1LkjNasj+iA=="
         },
         "signature": ""
+    },
+    "3d3e779b-2a89-43ad-acef-3348252bd477_crypt.png": {
+        "original_filename": "crypt.png",
+        "uploader": "joe",
+        "uploader_role": "Clinician",
+        "upload_timestamp": "2026-04-30T14:43:48.276387Z",
+        "allowed_roles": [
+            "Clinician"
+        ],
+        "key_ring_loop": {
+            "joe": "dH5M6NYeOlZ+RnSSMOFIrTq4jTdz3W9Qzf5P5W1jeU1KDKzD4DrnTj55xM76hS1TRb1W7nP8tsvS+yIOpRqfSuDYNeOmMYU6LIdYiNZIu88NRMiXpop/0uPVtUEavrWmTGT6mMDcomwSeUX5HbxkMOyORI/4XVckUtpHkCKWroQ0wDjbuI4disbQ6G8wpf9oQIPEQKNNfwCGJEXbIjcygMLNef1wZmKJTQSQg5IoGeryn1SGO/2UKynB6KM7DqN3Yz3BJ6Dg/XgvYjZRWIxnU5O4nLBeA7Qr7ZXr87tbTer/l0BNN5bC/BBWHUiUayn5fz35sagOyJJrkm6FoiUYZQ==",
+            "steve": "hJeJRikvjUJrKMWVtAqSB1iptxJifISJAgRzYqzzIJEUQtlXdfFCQZJ3YtNM0N3dmkvVE/xvqSpFNoeuyz8GxUHwL3qECHez/xFGizYh6nK6PCatgojI6/WWz+b4beToaUGoUkp7RRQFGL9WMhT53G2BLzF4O5mVSwB/F5dJsS8f26dPbsj+xoNDSQfLbybFqZ1cwE/bZ6qwh4c0MkfroK0aL/cWgfQwTyNga1uxZiq1v6b4RTh2JIbPma9V1KHUGLmzZ+d03Y7NdXMChSYo9n2L4/yZHiqss+UG16n4ycRojSRjHOlyKteuRTmPGtKIbsiasl8XUmGDNahbjMo3DQ=="
+        },
+        "signature": ""
+    },
+    "7b5b8ed2-e9ab-4af3-ac9b-5d6d1f370ae6_wagon-.png": {
+        "original_filename": "wagon-.png",
+        "uploader": "jerry",
+        "uploader_role": "Researcher",
+        "upload_timestamp": "2026-04-30T14:47:44.653630Z",
+        "allowed_roles": [
+            "Researcher"
+        ],
+        "key_ring_loop": {
+            "jerry": "ECajQB6ewt0mCfuGMvqCvWp9BToewIJ35ZaGM7f9svmBNib3760N5z/+RvY5xQO6WGO3ovgigIcTJxOgakyMvAhgPdW68/ExZZAWw1x+MEBKDONJbqjkfHEDTZOPpRYb8ZH0XyxAAcpsF9oufVHdm5Qo6wJrmrhiPraCHjLdnzhleVx2mZIZjLGF+6LfI1wGZfoGpppQvgFSWlFeX+F4d2zaE7aDXfRjL/O9WXpY5LdKYrbaCFna2f5Z9zJ6dgCIGUdajMaFRTxJciaa7QY0i03Fg27YihO14SLATH7IM35SlprEmr0bKfjcsAMYnubjkjTT2UC0VKqiJHhTcFiu8Q=="
+        },
+        "signature": "eskeCeiM+KVTLkbWmys7z7Pgbq46+snYOVxnqCxy57PNiPFpA73faFOOxr3nOJxAfmgPgfvA7RZI3JcCgcmE82GcMvZ48mqtuuq9oCeVPENgyKeGtdbAWDQE+mH+XzLqK+QYNU3Z+Rh1X1iZe0VhmAlCKRq5ABuvqpYdCo4eWylyg0+LRSrbjzx+iDTias/1cLZQyBaZ1t5Ado04B9+6ZmyxlPv3T3OI1lXaE+CORXRn72YU4OOzelDqbKp1rpz+kNvuGx0gSmGEpkV0ips02qRwVNptmCszDA04Ko3kMDWZ7iWPJSJAigvDjzdP4l0JyQEOHAoXrRsL+Ez2SAJzSQ=="
+    },
+    "b3e9139b-ed32-4a64-8c95-75225c779aab_Bartholomew.jpeg": {
+        "original_filename": "Bartholomew.jpeg",
+        "uploader": "joe",
+        "uploader_role": "Clinician",
+        "upload_timestamp": "2026-04-30T15:13:21.191394Z",
+        "allowed_roles": [
+            "Clinician"
+        ],
+        "key_ring_loop": {
+            "joe": "itbHwb4papPMV4OTqHq5pFp2cu+RFI5GSKONDbo5lE1X8Gw8WbfC1jvR6evej8tJtc1i3LyvDFz5VuJ2npho0nkTQKVI9mFZDvybNQcQX1xOEY6qFwtwqNXsp9gWLAhrsed3353nMiJI1SAlmcB6aWUNlHthrQiNzh7yK5i+9cEVmwZoZcbd9UcjdAMf9sw8X0wSSm1dHQH64ZPohxoeYdE/rKB0/B8uz8VEL0qazzSGi4hy6mvQEMQdlDESP5kd2TblTvJNthEeuBB/ubZ6wBG6LotgwBQxp1ukEzr1gviWbo7XE6FQ27RaPmw3F+43knErlNiogwFkBWfhH7AtuQ==",
+            "steve": "mqq9lOjwxFquYmBNuTqRgYS6mrkUFSHqEJwGd5rcb4BUo0bMk9Xnzg8jzWTFWCctUZ7T8s9++x/JwWkkpcpPMF9wvlJ27l1eOWy5bf/SNXlmPkcymz1X/D4b+2txgL/lTQT3yAayq+jnsulZC+QCJB9nYZ+hYJff44KfPj1XfO+4hfD5AMggmCvDh3Cnp94Pgn2/FoNHjWT5qdmAyRlHwwVuHG2ni5zNMdS0HcSle+cRnQXqpXBgoUs1TzHh+EUkx9U6ncsH+A+CI0BtxbkxTJzljrt0RSMnSveoFT1/Bh2DQhd/BmkKOmthLJZDR9WiBRhTwGkydMp75PWbJKB83Q=="
+        },
+        "signature": ""
+    },
+    "8f2cd482-0b90-4f5c-aba4-e70431dc4258_Cyber_Security_Research_Proposal_-_Domains_List.pdf": {
+        "original_filename": "Cyber_Security_Research_Proposal_-_Domains_List.pdf",
+        "uploader": "jerry",
+        "uploader_role": "Researcher",
+        "upload_timestamp": "2026-04-30T15:15:34.389691Z",
+        "allowed_roles": [
+            "Researcher"
+        ],
+        "key_ring_loop": {
+            "jerry": "Jn/spxK5FRvyraPwpzQr2GkymLQUUJwQo0vmIxp9QDdeNwkJY4khHBoL4pTLchZq2xTdwLMlkl0wdD7yigKCWqdTVv0qV2kXFs8Ms6vWq2bCjyRfnIipkQV3QuHe9Wndqw5a6gjmfCQnB6YbefRfK2kq87n45CgE2mGsAtHoudfUNhgSXbzXt/UFOmR94YW6AbbP9jey/ziIt2AVvuWuh/gDU7k9b9CNgIlg1GNPRFZCaL5+7Cw504/5dadW7hZdWiylFYjA/Xl9k/1cws6VTca53KQyJON+IKSY3xCft04VOUAOaeOedKD24YNOM+LlgLAeZZDIdQXDEBweP/RdbA=="
+        },
+        "signature": "Iz25+Z+9wlyBhIQ7RPgn4tDxb2IsUW71d9dDlsK3DAumQeK53Dx2k5tyTutyBjV5DXUPINZ16g+FunFTduUDVIp6ryfdglNVP725Rru46Ue9u4ucZtb+b7da80wv3CIXXhLA3IukHG4zpITxfeC1W2DfzuZBPRMdlGkcxjMDg8lyBooIrQveeGvXiNjrZhB4yqvQUCy9TeOPxUi8AJr+pfCB8UIiTsxdLvUh6/RmT1C4F1XxaWdy/BUoK2gVkjpAb0gDXnvcnmjLhYN4MHJD3PyadTSFUK1D4WTzZkX9L6GKCVCBlHkQg2bDZcK2m2CecntNiwhWT2dmLQt/8ub8pg=="
     }
 }
