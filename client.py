@@ -46,7 +46,7 @@ def input_with_timeout(prompt, timeout=TIMEOUT_SECONDS):
     #by mitigating risks of unauthorized access on unattended terminals
 
     print(prompt, end=' ', flush=True)
-    if os.name == 'nt':
+    if os.name == 'nt': #handling windows clients, written and tested on linux
         import msvcrt
         import time
         start_time = time.time()
@@ -55,14 +55,14 @@ def input_with_timeout(prompt, timeout=TIMEOUT_SECONDS):
             if msvcrt.kbhit():
                 char = msvcrt.getwch()
                 if char in ('\x00', '\xe0'):
-                    msvcrt.getwch() # Consume scan code for special keys like arrows
+                    msvcrt.getwch() #consume scan code for special keys like arrows
                     continue
-                if char == '\x03': # Ctrl+C support
+                if char == '\x03': # ctrl c support
                     raise KeyboardInterrupt
                 if char in ('\r', '\n'):
                     print()
                     return input_string.strip()
-                elif char == '\x08': # Backspace support
+                elif char == '\x08': #backspace support
                     if len(input_string) > 0:
                         input_string = input_string[:-1]
                         print('\b \b', end='', flush=True)

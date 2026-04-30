@@ -81,8 +81,6 @@ def login_user(username, password):
 
 def verify_mfa_code(username, mfa_code):
     #validates the multi-factor authentication token utilizing the totp standard
-    #providing an indispensable supplementary layer of identity verification
-    #independent of the primary password-based authentication mechanism
     users = load_users()
     user_data = users.get(username)
     if not user_data or 'totp_secret' not in user_data:

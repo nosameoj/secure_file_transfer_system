@@ -11,7 +11,7 @@ import re
 MAX_USERNAME_LENGTH = 50
 MIN_USERNAME_LENGTH = 3
 MAX_PASSWORD_LENGTH = 256 # For DoS prevention
-MIN_PASSWORD_LENGTH = 1
+MIN_PASSWORD_LENGTH = 5
 MFA_CODE_LENGTH = 6
 ALLOWED_ROLES = ['Clinician', 'Researcher', 'Auditor', 'Admin']
 

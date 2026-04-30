@@ -220,5 +220,11 @@
         "action": "LOGIN",
         "username": "gary",
         "details": "Successful login as Auditor"
+    },
+    {
+        "timestamp": "2026-04-30T14:26:05.845423Z",
+        "action": "LOGIN",
+        "username": "joe",
+        "details": "Successful login as Clinician"
     }
 ]
